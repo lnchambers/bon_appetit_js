@@ -1,9 +1,11 @@
 import { expect } from "chai"
 import Pantry from "../lib/pantry"
+import Recipe from "../lib/recipe"
 
 describe("Pantry", () => {
   describe("attributes", () => {
     const pantry = new Pantry()
+    const recipe = new Recipe("Cheese Pizza")
 
     it("initializes with an empty stock", () => {
       expect(pantry.stock).to.eql({})
@@ -22,6 +24,16 @@ describe("Pantry", () => {
       pantry.restock("Cheese", 20)
 
       expect(pantry.stockCheck("Cheese")).to.equal(30)
+    })
+
+    it("can add ingredients to shopping list", () => {
+      recipe.addIngredient("Cheese", 20)
+      recipe.addIngredient("Flour", 20)
+
+      expect(recipe.ingredients).to.eql({"Cheese": 20, "Flour": 20})
+      pantry.addToShoppingList(recipe)
+
+      expect(pantry.shoppingList).to.eql({"Cheese": 20, "Flour": 20})
     })
   })
 })
