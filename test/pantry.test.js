@@ -5,7 +5,6 @@ import Recipe from "../lib/recipe"
 describe("Pantry", () => {
   describe("attributes", () => {
     const pantry = new Pantry()
-    const recipe = new Recipe("Cheese Pizza")
 
     it("initializes with an empty stock", () => {
       expect(pantry.stock).to.eql({})
@@ -27,6 +26,7 @@ describe("Pantry", () => {
     })
 
     it("can add ingredients to shopping list", () => {
+      let recipe = new Recipe("Cheese Pizza")
       recipe.addIngredient("Cheese", 20)
       recipe.addIngredient("Flour", 20)
 
@@ -37,6 +37,7 @@ describe("Pantry", () => {
     })
 
     it("can add moar ingredients to shopping list", () => {
+      let recipe = new Recipe("Cheese Pizza")
       recipe.addIngredient("Cheese", 20)
       recipe.addIngredient("Flour", 20)
 
