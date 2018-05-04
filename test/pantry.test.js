@@ -15,8 +15,13 @@ describe("Pantry", () => {
 
     it("can add ingredients to the stock", () => {
       pantry.restock("Cheese", 10)
-      
-      expect(pantry.stockCheck("Cheese").to.equal(10))
+
+      expect(pantry.stockCheck("Cheese")).to.equal(10)
+      expect(pantry.stock).to.eql({ "Cheese": 10})
+
+      pantry.restock("Cheese", 20)
+
+      expect(pantry.stockCheck("Cheese")).to.equal(30)
     })
   })
 })
